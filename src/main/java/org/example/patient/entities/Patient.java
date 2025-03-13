@@ -1,13 +1,10 @@
 package org.example.patient.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 
-
+import java.util.Collection;
 import java.util.Date;
 @Entity @ToString
 
@@ -20,7 +17,8 @@ public class  Patient {
     private Date dateNaissance;
     private boolean malade;
     private int score;
-
+    @OneToMany(mappedBy = "patient")
+    private Collection<RendezVous> rendezVous;
 
 public Patient(String nom, Date dateNaissance, boolean malade, int score) {
     this.nom = nom;
